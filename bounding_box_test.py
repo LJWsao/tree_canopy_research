@@ -13,5 +13,6 @@ model.use_release()
 for x in range(4):
     image_base_path = r'C:\Users\lamines24\Documents\tree_canopy_research\street_trees_level_'
     sample_image_path = get_data(image_base_path + str(x+1) + r'.tif')
-    img = model.predict_image(path=sample_image_path, return_plot=True)
-    plt.imsave(r'C:\Users\lamines24\Documents\tree_canopy_research\trees_test_result_' + str(x+1) + r'.jpg', img)
+    # img = model.predict_image(path=sample_image_path, return_plot=True)
+    predicted_raster = model.predict_tile(sample_image_path, return_plot = True, patch_size=300,patch_overlap=0.25)
+    plt.imsave(r'C:\Users\lamines24\Documents\tree_canopy_research\trees_test_result_raster_' + str(x+1) + r'.jpg', predicted_raster)
